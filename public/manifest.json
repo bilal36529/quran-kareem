@@ -1,0 +1,63 @@
+{
+  "name": "Quran Kareem",
+  "short_name": "Quran Kareem",
+  "description": "Experience the Divine Words through modern technology",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "orientation": "portrait",
+  "categories": ["education", "books", "religion"],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Browse Quran",
+      "url": "/quran",
+      "description": "Browse and read the Quran",
+      "icons": [{ "src": "/icons/browse-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Search",
+      "url": "/search",
+      "description": "Search the Quran",
+      "icons": [{ "src": "/icons/search-96x96.png", "sizes": "96x96" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/home-light.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Home page in light mode"
+    },
+    {
+      "src": "/screenshots/home-dark.png", 
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Home page in dark mode"
+    }
+  ],
+  "related_applications": [],
+  "protocol_handlers": [
+    {
+      "protocol": "web+quran",
+      "url": "/quran?q=%s"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ./"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NEXT_TELEMETRY_DISABLED = "1"
+  NEXT_PUBLIC_STATIC_EXPORT = "true"
+  NEXT_PUBLIC_API_BASE = "https://api.qurancdn.com/api/qdc"
+  NEXT_PUBLIC_AUDIO_BASE = "https://everyayah.com/data"
+  NEXT_PUBLIC_BASE_URL = "https://qurankareem.app"
+  NEXT_PUBLIC_BASE_PATH = ""
+  NEXT_PUBLIC_ENABLE_ANALYTICS = "true"
+  NEXT_PUBLIC_ENABLE_ADSENSE = "true"
+  NEXT_PUBLIC_ENABLE_OFFLINE_MODE = "true"
+  NEXT_PUBLIC_ENABLE_DEBUG = "false"
+  NPM_FLAGS = "--no-audit --no-fund"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      img-src 'self' data: https: blob:;
+      media-src 'self' https://everyayah.com data: blob:;
+      connect-src 'self' https://api.qurancdn.com https://everyayah.com https://api.aladhan.com;
+      font-src 'self' data: https://fonts.gstatic.com;
+      frame-ancestors 'none';
+      worker-src 'self' blob:;
+      manifest-src 'self';
+      upgrade-insecure-requests;
+    """
+
+# Cache settings for all routes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/quran/*"
+  to = "/quran/index.html"
+  status = 200
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache settings for HTML files
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
