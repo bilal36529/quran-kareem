@@ -42,7 +42,7 @@ export default function Home() {
             
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary/90 to-primary/70">
-                Qurankareem.app
+                Qurankareem.apps
               </span>
             </h1>
             
